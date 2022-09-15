@@ -1,0 +1,69 @@
+<nav class="my-3 d-md-flex">
+
+    <div class="mb-1">
+        <div class="btn-group me-1">
+            <button class="btn btn-outline-primary" [routerLink]="['/',dbkey,'items']"><i title="Home"
+                    class="bi bi-list-task"></i></button>
+        </div>
+
+        <div class="btn-group mx-1">
+            <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" checked disabled>
+            <label class="btn btn-outline-primary" for="btn-check"><i class="bi bi-check-square"></i></label>
+
+            <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off" checked disabled>
+            <label class="btn btn-outline-primary" for="btn-check2"><i class="bi bi-calendar-range"></i></label>
+        </div>
+
+        <div class="btn-group mx-1">
+            <button class="btn btn-outline-primary" [routerLink]="['..','groupby','context']"
+                title="Group by context">@</button>
+            <button class="btn btn-outline-primary" [routerLink]="['..','groupby','project']"
+                title="Group by project">+</button>
+            <button class="btn btn-outline-primary" [routerLink]="['..','groupby','priority']"
+                title="Group by priority">!</button>
+            <button class="btn btn-outline-primary" [routerLink]="['..','groupby','dueDate']"
+                title="Group by due date"><i class="bi bi-calendar-event"></i></button>
+            <button class="btn btn-outline-primary" [routerLink]="['..','groupby','threshold']"
+                title="Group by threshold date"><i class="bi bi-calendar-range"></i></button>
+        </div>
+
+        <div class="btn-group ms-1 me-2">
+            <button class="btn btn-primary" [routerLink]="['..']" title="Import/Export"><i
+                    class="bi bi-cloud-arrow-down"></i></button>
+        </div>
+    </div>
+    <div>
+        <div class="btn-group me-1">
+            <input type="checkbox" class="btn-check disabled" disabled>
+            <label class="btn btn-outline-secondary" for="filters"><i title="Filter(s)" class="bi bi-filter-square"></i></label>
+            <input type="checkbox" class="btn-check" disabled>
+            <label class="btn btn-outline-secondary" for="add"><i title="Add item(s)" class="bi bi-plus-square"></i></label>
+        </div>
+        <button class="btn btn-outline-primary mx-1" [routerLink]="['/about']" title="Help/About"><i class="bi bi-question"></i></button>
+    </div>
+</nav>
+
+<div *ngIf="!isLoading; else Loading">
+
+    <textarea class="form-control mb-3" name="model" id="model" cols="30" rows="20" [(ngModel)]="model"></textarea>
+
+    <button class="btn btn-primary" (click)="replace()" title="Update">
+        <span *ngIf="!isReplacing;else Working"><i class="bi bi-cloud-arrow-up"></i></span>
+    </button>
+
+        <button class="btn btn-primary ms-3" (click)="removeCompleted()">Remove completed</button>
+</div>
+
+<ng-template #Working>
+    Working...
+</ng-template>
+
+
+<ng-template #Loading>
+    <div class="text-center">
+        Loading...
+        <div class="spinner-border spinner-border-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>

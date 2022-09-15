@@ -1,0 +1,48 @@
+<div *ngIf="!isLoading;else Loading">
+    <div>
+        <div class="input-group my-3">
+            <div class="input-group-text">
+              <input class="form-check-input mt-0" type="checkbox" disabled [(ngModel)]="model.isCompleted">
+            </div>
+            <input class="form-control" type="text" name="raw" id="raw" [(ngModel)]="model.raw" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" (click)="update()" title="Update">
+            <span *ngIf="!isUpdating;else Working"><i class="bi bi-cloud-arrow-up"></i></span>
+        </button>
+        <button class="btn btn-danger ms-3" (click)="delete()" title="Delete">
+            <span *ngIf="!isDeleting;else Working"><i class="bi bi-trash"></i></span>
+        </button>
+    </div>
+    <div class="form-floating">
+        <input class="form-control my-3" type="number" name="ndays" id="ndays" [(ngModel)]="ndays" autocomplete="off">
+        <label for="ndays">Postpone # days</label>
+        <button class="btn btn-primary" (click)="postpone()" title="Postpone due date by N days">
+            <span *ngIf="!isPostponing;else Working">Due</span>
+        </button>
+        <button class="btn btn-primary ms-3" (click)="threshold()" title="Postpone threshold date by N days">
+            <span *ngIf="!isThreshold;else Working">Threshold</span>
+        </button>
+    </div>
+</div>
+
+<div class="alert alert-success mt-3" *ngIf="isDeleted">Deleted.</div>
+
+<ng-template #Working>
+    <div class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</ng-template>
+
+
+<ng-template #Loading>
+    <div class="text-center my-5" *ngIf="!isError; else Error">
+        Loading...
+        <div class="spinner-border spinner-border-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #Error>
+    <div class="alert alert-danger my-5 text-center" *ngIf="isError">Error loading item</div>
+</ng-template>

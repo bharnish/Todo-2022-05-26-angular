@@ -1,0 +1,19 @@
+<div class="row my-3">
+    <div class="col order-2">
+        <p class="lead">
+            Create a GTD and Todo.txt compatible encrypted task list
+        </p>
+        <p>See <a href="about">about</a> for more information and features.</p>
+    </div>
+    <div class="col">
+        <form action="">
+
+            <div class="form-floating">
+                <input type="text" class="form-control" name="dbkey" id="dbkey" [(ngModel)]="dbkey" autofocus autocomplete="on">
+                <label for="dbkey">Database key</label>
+            </div>
+            
+            <button class="btn btn-primary my-3" [routerLink]="['/', dbkey, 'items']" [ngClass]="{disabled:dbkey==''}">Open database</button>
+        </form>
+    </div>
+</div>

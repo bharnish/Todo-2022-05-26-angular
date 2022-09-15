@@ -1,0 +1,165 @@
+<h2 class="py-2 border-bottom">Features</h2>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-collection px-2"></i>
+        </div>
+        <h2>Multiple lists</h2>
+        <p>Each unique dbkey is it's own encrypted todo list. Create a new list just by changing the dbkey on the
+            homepage or in the URL. Pick a unique DbKey, perhaps your email address plus some random letters, or the
+            current date and time.
+            It doesn't matter what you choose, as long as it is unique and un-guessable.</p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-at px-2"></i>
+        </div>
+        <h2><a href="https://gettingthingsdone.com/">GTD</a> Compatible</h2>
+        <p>Use <i>@</i> for Contexts, <i>+</i> for Projects, t:[date] for tickler (threshold) dates. Group by project,
+            context or threshold.</p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-check-square px-2"></i>
+        </div>
+        <h2>Completed tasks</h2>
+        <p>Show, hide or remove completed tasks. Completed items show up <span class="complete">struck-out</span>.</p>
+    </div>
+</div>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-key px-2"></i>
+        </div>
+        <h2>Fully encrypted</h2>
+        <p>DBKey is hashed using <i>SHA1</i>, for the database key. The data is encrypted using <i>AES</i> using a key
+            generated from the DBKey and a <i>salt</i> using <i>PBKDF2</i>. <i>HTTPS</i> for security between the server
+            and browser.</p>
+        <p>Bookmark your list, if you lose/forget your DBKey, your data is unrecoverable.</p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-list-check px-2"></i>
+        </div>
+        <h2><a href="https://github.com/todotxt/todo.txt">Todo.txt</a> Compatible</h2>
+        <p>Uses the Todo.txt specification for text based todo items. Import/export from other Todo.txt
+            compatible task lists. Group by Priority, Project, Context, Due date, Completion date.</p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-exclamation px-2"></i>
+        </div>
+        <h2>Priorities</h2>
+        <p>Use (A), (B), (C) ... (Z), for priorities, also group by priority in priority order. Priority items show up
+            in <span class="priority">bold</span>.</p>
+    </div>
+</div>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-calendar-range px-2"></i>
+        </div>
+        <h2>Threshold/tickler dates</h2>
+        <p>Set a date when the todo item will showup in the todo list. <code>t:2022-01-01</code>. Show or hide future
+            items.</p>
+        <p>Past threshold dates show up in <span class="thresholdPast">dark red</span>, threshold today show up in <span
+                class="thresholdToday">dark yellow</span>.</p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-calendar px-2"></i>
+        </div>
+        <h2>Due dates</h2>
+        <p>Items due today, show up in <span class="due">yellow</span>, past due items show up in <span
+                class="overdue">red</span>, due tomorrow show up in <span class="tomorrow">blue</span>.
+            <code>due:2022-01-01</code>
+        </p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-calendar-day px-2"></i>
+        </div>
+        <h2>Dates</h2>
+        <p>Supports multiple date formats when saving/updating items. The non-formal date will be replaced with the calculated date.</p>
+        <ul>
+            <li>
+                Use <code>yesterday</code>, <code>today</code>, <code>tomorrow</code>
+            </li>
+            <li>
+                Upcoming day of the week - <code>sun</code>...<code>sat</code> or <code>sunday</code>...<code>saturday</code>
+            </li>
+            <li>
+                Relative dates - <code>2d</code>, <code>1m</code>, <code>1y</code> - use <code>d</code>ays, <code>w</code>eeks, <code>m</code>onths, or <code>y</code>ears.
+            </li>
+            <li>
+                Partial Dates - No spaces, <code>Oct-4</code>, <code>Dec-25</code>, or <code>Jan-1</code>.
+            </li>
+            <li>
+                Full Dates - <code>2022-10-04</code>, <code>Oct-4-2022</code>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-calendar-range px-2"></i>
+        </div>
+        <h2><a href="https://updatenotes.blog/todotxt-recurring-tasks/">Recurring</a> items</h2>
+        <p>Strict or weak recurring tasks. <code>rec:+1w</code>, when completed will create a new item 1 week from the
+            current due or threshold date. <code>rec:1w</code> will create a new item 1 week from today. Supported
+            periods <code>d</code> - day(s), <code>w</code> - week(s), <code>m</code> - month(s), <code>y</code> -
+            year(s).</p>
+        <p>Examples:</p>
+            <ul>
+            <li><code>Weekly review every sunday t:sunday rec:+1w</code></li>
+            <li><code>Clean cat's litterbox weekly t:sunday rec:1w</code></li>
+        </ul>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-collection-play px-2"></i>
+        </div>
+        <h2>Grouping</h2>
+        <p>Show no groupings (default), or group by: Context, Project, Priority, Due date, or Threshold date.</p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-filter px-2"></i>
+        </div>
+        <h2>Filtering</h2>
+        <p>Filter tasks by text, one per line. Filters are ANDed together. Exclude text with a "-" sign. I.e.
+            <code>-rec:</code>.
+        </p>
+    </div>
+</div>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-plus px-2"></i>
+        </div>
+        <h2>Add multiple items</h2>
+        <p>Multiple items can be added or uploaded at the same time, one per line.</p>
+    </div>
+    <div class="feature col">
+        <div
+            class="feature-icon d-inline-flex rounded align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <i class="bi bi-card-checklist px-2"></i>
+        </div>
+        <h2>Item chaining</h2>
+        <p><code>Do something to:"Do something else later"</code> will create an item <code>Do something else later</code> when the primary item is completed.</p>
+    </div>
+</div>
