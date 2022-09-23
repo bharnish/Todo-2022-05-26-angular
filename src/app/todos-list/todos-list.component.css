@@ -3,6 +3,10 @@ a {
     color: var(--bs--black);
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 a.overdue { 
     background-color: #f8d7da;
     color: #842029;
@@ -60,3 +64,8 @@ a.complete {
     background-color: #CCC;
     border: 1px solid #999;
 }
+
+.waitingfor {
+    color: #CCC;
+}
+

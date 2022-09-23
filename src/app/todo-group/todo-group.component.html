@@ -1,99 +1,112 @@
-<nav class="my-3 d-md-flex">
-    <div class="mb-1">
+<div (document:keydown.control.shift.u)="load()"></div>
+<nav class="my-3 d-flex flex-wrap">
+    <div class="mb-2">
+        <div class="btn-group me-2">
+            <input type="checkbox" class="btn-check" id="add" data-bs-toggle="collapse" data-bs-target="#collapseAdd"
+                tabindex="1">
+            <label class="btn btn-outline-primary" for="add"><i title="Add item(s)"
+                    class="bi bi-plus-square"></i></label>
 
-        <div class="btn-group me-1">
-            <button class="btn btn-outline-primary" [routerLink]="['/',dbkey,'items']" title="Home"><i
-                    class="bi bi-list-task"></i>
-            </button>
+            <input type="checkbox" class="btn-check" id="filters" (click)="showFilters(!showFilter)" tabindex="5"
+                [(ngModel)]="showFilter">
+            <label class="btn btn-outline-primary" for="filters"><i title="Filter(s)"
+                    class="bi bi-filter-square"></i></label>
         </div>
-        <div class="btn-group mx-1">
+        <div class="btn-group me-2">
             <div class="position-relative btn-group">
                 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" [(ngModel)]="showCompleted"
                     (change)="load()">
                 <label class="btn btn-outline-primary" for="btn-check"><i title="Show completed"
                         class="bi bi-check-square"></i></label>
                 <span *ngIf="completedCount > 0"
-                    class="position-absolute top-0 start-50 badge bg-success rounded translate-middle" style="z-index: 1;" title="Completed today">{{completedCount}}</span>
+                    class="position-absolute top-0 start-50 badge bg-success rounded translate-middle"
+                    style="z-index: 1;" title="Completed today">{{completedCount}}</span>
 
 
-                </div>
+            </div>
 
-                <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off" [(ngModel)]="showFuture"
+            <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off" [(ngModel)]="showFuture"
                 (change)="load()">
-                <label class="btn btn-outline-primary" for="btn-check2"><i title="Show future"
+            <label class="btn btn-outline-primary" for="btn-check2"><i title="Show future"
                     class="bi bi-calendar-range"></i></label>
         </div>
 
-        <div class="btn-group mx-1">
+    </div>
+    <div class="mb-1 order-3 order-md-2">
+        <div class="btn-group me-2">
+            <button class="btn btn-outline-primary" [routerLink]="['/',dbkey,'items']" title="Home"><i
+                    class="bi bi-list-task"></i>
+            </button>
+        </div>
+        <div class="btn-group me-2">
             <button class="btn btn-outline-primary" [routerLink]="['..','context']" routerLinkActive="active"
-                title="Group by context">@</button>
+                title="Group by context"><i class="bi bi-at"></i></button>
             <button class="btn btn-outline-primary" [routerLink]="['..','project']" routerLinkActive="active"
-                title="Group by project">+</button>
+                title="Group by project"><i class="bi bi-plus"></i></button>
             <button class="btn btn-outline-primary" [routerLink]="['..','priority']" routerLinkActive="active"
-                title="Group by priority">!</button>
+                title="Group by priority"><i class="bi bi-exclamation"></i></button>
             <button class="btn btn-outline-primary" [routerLink]="['..','dueDate']" routerLinkActive="active"
                 title="Group by due date"><i class="bi bi-calendar-event"></i></button>
             <button class="btn btn-outline-primary" [routerLink]="['..','threshold']" routerLinkActive="active"
                 title="Group by threshold date"><i class="bi bi-calendar-range"></i></button>
         </div>
 
-        <div class="btn-group ms-1 me-2">
-            <button class="btn btn-outline-primary" [routerLink]="['../..','text']"><i title="Import/Export"
-                    class="bi bi-cloud-arrow-down"></i></button>
-        </div>
     </div>
-    <div>
-        <div class="btn-group me-1">
-            <input type="checkbox" class="btn-check" id="filters" (click)="showFilters(!showFilter)" tabindex="1" [(ngModel)]="showFilter">
-            <label class="btn btn-outline-primary" for="filters"><i title="Filter(s)" class="bi bi-filter-square"></i></label>
-            
-            <input type="checkbox" class="btn-check" id="add" data-bs-toggle="collapse" data-bs-target="#collapseAdd" tabindex="5">
-            <label class="btn btn-outline-primary" for="add"><i title="Add item(s)" class="bi bi-plus-square"></i></label>
-        </div>
-        <button class="btn btn-outline-primary mx-1" [routerLink]="['/about']" title="Help/About"><i class="bi bi-question"></i></button>
-    </div>
-</nav>
+    <div class="mb-1 order-2 order-md-3" >
+        <button class="btn btn-outline-primary me-2" [routerLink]="['../..','text']"><i title="Import/Export"
+                class="bi bi-cloud-arrow-down"></i></button>
+        <button class="btn btn-outline-primary" [routerLink]="['/about']" title="Help/About"><i
+                class="bi bi-question"></i></button>
 
-<div *ngIf="showFilter">
-    <div class="form-floating my-3">
-        <textarea class="form-control" name="filters" id="filters" cols="30" rows="10" [(ngModel)]="filters" tabindex="2"></textarea>
-        <label for="filters">Filter</label>
     </div>
-    <button class="btn btn-primary me-1" *ngIf="filters != oldFilter" (click)="applyFilter(filters)" tabindex="3" title="Apply filter(s)">Apply</button>
-    <button class="btn btn-primary" *ngIf="filters != ''" (click)="clearFilter()" tabindex="4" title="Clear filter(s)">x</button>
-</div>
+
+</nav>
 
 <div class="collapse" id="collapseAdd">
     <div class="form-floating my-3">
-        <textarea class="form-control" name="quickAdd" id="quickAdd" cols="30" rows="10"
-            title="Add 1 or more todo items" [(ngModel)]="quickAdd" tabindex="6"></textarea>
+        <textarea class="form-control shadow" name="quickAdd" id="quickAdd" cols="30" rows="10"
+            title="Add 1 or more todo items" [(ngModel)]="quickAdd" tabindex="2"></textarea>
         <label for="quickAdd">Add item(s)</label>
     </div>
-    <button class="btn btn-primary" *ngIf="quickAdd != ''" (click)="add(quickAdd)" title="Add" tabindex="7">
+    <button class="btn btn-primary" *ngIf="quickAdd != ''" (click)="add(quickAdd)" title="Add" tabindex="3">
         <span *ngIf="!isAdding; else Spinner">+</span>
     </button>
-    <button class="btn btn-primary mx-2" *ngIf="quickAdd != ''" (click)="clearAdd()" title="Clear" tabindex="8">
+    <button class="btn btn-primary mx-2" *ngIf="quickAdd != ''" (click)="clearAdd()" title="Clear" tabindex="4">
         <span>x</span>
     </button>
+</div>
+
+<div *ngIf="showFilter">
+    <div class="form-floating my-3">
+        <textarea class="form-control shadow" name="filters" id="filters" cols="30" rows="10" [(ngModel)]="filters"
+            tabindex="6"></textarea>
+        <label for="filters">Filter</label>
+    </div>
+    <button class="btn btn-primary me-1" *ngIf="filters != oldFilter" (click)="applyFilter(filters)" tabindex="7"
+        title="Apply filter(s)">Apply</button>
+    <button class="btn btn-primary" *ngIf="filters != ''" (click)="clearFilter()" tabindex="4"
+        title="Clear filter(s)">x</button>
 </div>
 
 
 <div *ngIf="!isLoading; else Loading" class="my-3">
     <div *ngIf="model.length > 0; else Empty">
         <div *ngFor="let group of model">
-            <h2>{{group.key}}</h2>
+            <h2 [ngClass]="{waitingfor:group.isAllWaitingFor && group.key != '@waitingfor'}">{{group.key}}</h2>
             <ul class="list-group">
                 <li class="list-group-item" *ngFor="let todo of group.data">
                     <input class="me-3 form-check-input" type="checkbox" name="completed" id="completed"
-                    [(ngModel)]="todo.isCompleted" (change)="complete(todo)">
+                        [(ngModel)]="todo.isCompleted" (change)="complete(todo)">
                     <a [routerLink]="['/',dbkey,'items',todo.id]"
-                    [ngClass]="{complete:todo.isCompleted,overdue:todo.isOverdue,due:todo.isDueToday,priority:todo.hasPriority,tomorrow:todo.isDueTomorrow,thresholdPast:todo.isThresholdPast,thresholdToday:todo.isThresholdToday}"
-                    title="Edit">{{todo.raw}}</a>
-                    <button *ngFor="let c of todo.contexts" class="btn context" (click)="quickFilter(c)">{{c}}</button>
-                    <button *ngFor="let p of todo.projects" class="btn project" (click)="quickFilter(p)">{{p}}</button>
-                </ul>
-            </div>
+                        [ngClass]="{waitingfor:(todo.isWaitingFor&&group.key!='@waitingfor')||(todo.isProject&&group.key!='@project'),complete:todo.isCompleted,overdue:todo.isOverdue,due:todo.isDueToday,priority:todo.hasPriority,tomorrow:todo.isDueTomorrow,thresholdPast:todo.isThresholdPast,thresholdToday:todo.isThresholdToday}"
+                        title="Edit">{{todo.raw}}</a>
+                    <button *ngFor="let c of todo.contexts" class="btn context" title="Filter {{c}}"
+                        (click)="quickFilter(c)">{{c}}</button>
+                    <button *ngFor="let p of todo.projects" class="btn project" title="Filter {{p}}"
+                        (click)="quickFilter(p)">{{p}}</button>
+            </ul>
         </div>
+    </div>
 </div>
 
 

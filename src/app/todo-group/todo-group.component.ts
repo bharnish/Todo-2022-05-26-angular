@@ -61,6 +61,13 @@ export class TodoGroupComponent implements OnInit {
   }
 
   quickFilter(filters:string) { 
+    if (this.filters == filters) {
+      // clear
+      this.clearFilter();
+      this.showFilter = false;
+      return;
+    }
+
     this.filters = filters;
     this.oldFilter = filters;
     this.quickAdd = filters;

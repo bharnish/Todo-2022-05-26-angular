@@ -78,4 +78,12 @@ export class TodoEditComponent implements OnInit {
     })
   }
 
+  complete() {
+    this.svc.putApiTasksIdCompleted({DbKey: this.dbkey, id: this.model.id??'', isCompleted: this.model.isCompleted}).subscribe(x => {
+      this.load();
+    },
+    e => {
+      this.isError = true;
+    });
+  }
 }

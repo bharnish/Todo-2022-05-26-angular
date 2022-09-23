@@ -80,6 +80,13 @@ export class TodosListComponent implements OnInit {
   }
 
   quickFilter(filters:string) { 
+    if (this.filters == filters) {
+      // clear
+      this.clearFilters();
+      this.showFilter = false;
+      return;
+    }
+
     this.filters = filters;
     this.oldFilter = filters;
     this.quickAdd = filters;

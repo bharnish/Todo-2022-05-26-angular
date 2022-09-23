@@ -140,26 +140,14 @@ class TasksService extends __BaseService {
   }
 
   /**
-   * @param params The `TasksService.GetApiTasksTextParams` containing the following parameters:
-   *
-   * - `Future`:
-   *
-   * - `Filters`:
-   *
-   * - `DbKey`:
-   *
-   * - `Completed`:
-   *
+   * @param DbKey undefined
    * @return Success
    */
-  getApiTasksTextResponse(params: TasksService.GetApiTasksTextParams): __Observable<__StrictHttpResponse<string>> {
+  getApiTasksTextResponse(DbKey?: string): __Observable<__StrictHttpResponse<string>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    if (params.Future != null) __params = __params.set('Future', params.Future.toString());
-    if (params.Filters != null) __params = __params.set('Filters', params.Filters.toString());
-    if (params.DbKey != null) __headers = __headers.set('DbKey', params.DbKey.toString());
-    if (params.Completed != null) __params = __params.set('Completed', params.Completed.toString());
+    if (DbKey != null) __headers = __headers.set('DbKey', DbKey.toString());
     let req = new HttpRequest<any>(
       'GET',
       this.rootUrl + `/api/Tasks/text`,
@@ -178,20 +166,11 @@ class TasksService extends __BaseService {
     );
   }
   /**
-   * @param params The `TasksService.GetApiTasksTextParams` containing the following parameters:
-   *
-   * - `Future`:
-   *
-   * - `Filters`:
-   *
-   * - `DbKey`:
-   *
-   * - `Completed`:
-   *
+   * @param DbKey undefined
    * @return Success
    */
-  getApiTasksText(params: TasksService.GetApiTasksTextParams): __Observable<string> {
-    return this.getApiTasksTextResponse(params).pipe(
+  getApiTasksText(DbKey?: string): __Observable<string> {
+    return this.getApiTasksTextResponse(DbKey).pipe(
       __map(_r => _r.body as string)
     );
   }
@@ -594,16 +573,6 @@ module TasksService {
     replace?: boolean;
     body?: StringDTO;
     DbKey?: string;
-  }
-
-  /**
-   * Parameters for getApiTasksText
-   */
-  export interface GetApiTasksTextParams {
-    Future?: boolean;
-    Filters?: string;
-    DbKey?: string;
-    Completed?: boolean;
   }
 
   /**

@@ -15,6 +15,7 @@ export class TodoTextComponent implements OnInit {
   model = '';
   isReplacing = false;
   isLoading = false;
+  isError = false;
 
   ngOnInit(): void {
     this.routed.paramMap.subscribe(x => {
@@ -25,7 +26,7 @@ export class TodoTextComponent implements OnInit {
 
   load() { 
     this.isLoading = true;
-    this.svc.getApiTasksText({DbKey:this.dbkey, Future: true, Completed: true}).subscribe(x => {
+    this.svc.getApiTasksText(this.dbkey).subscribe(x => {
       this.model = x;
       this.isLoading = false;
     })
@@ -33,10 +34,11 @@ export class TodoTextComponent implements OnInit {
 
    replace() { 
     this.isReplacing = true;
+    this.isError = false;
     this.svc.postApiTasks({DbKey:this.dbkey, replace: true, body: { value:this.model }}).subscribe(x => {
       this.isReplacing = false;
       this.load();
-    });
+    }, err => this.isError = true);
   }
 
   removeCompleted() { 
