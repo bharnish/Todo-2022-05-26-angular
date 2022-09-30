@@ -51,13 +51,13 @@
 <div *ngIf="!isLoading; else Loading">
 
     <textarea class="form-control mb-3 shadow" name="model" id="model" cols="30" rows="20"
-        [(ngModel)]="model"></textarea>
+        [(ngModel)]="model" autofocus tabindex="1"></textarea>
 
-    <button class="btn btn-primary" (click)="replace()" title="Update">
+    <button class="btn btn-primary" (click)="replace()" title="Update" tabindex="2">
         <span *ngIf="!isReplacing;else Working"><i class="bi bi-cloud-arrow-up"></i></span>
     </button>
 
-    <button class="btn btn-primary ms-3" (click)="removeCompleted()">Remove completed</button>
+    <button class="btn btn-primary ms-3" (click)="removeCompleted()" tabindex="3">Remove completed</button>
 
     <div *ngIf="isError">
         <div class="alert alert-danger mt-3">Error encountered</div>

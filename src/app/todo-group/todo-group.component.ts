@@ -41,7 +41,7 @@ export class TodoGroupComponent implements OnInit {
       this.model = x.groupings ?? [];
       this.completedCount = x.completedCount ?? 0;
       this.isLoading = false;
-    })
+    }, e => this.isError = true)
   }
 
   complete(todo:TodoDTO) {

@@ -4,8 +4,9 @@
         <div class="btn-group me-2">
             <input type="checkbox" class="btn-check" id="add" data-bs-toggle="collapse" data-bs-target="#collapseAdd"
                 tabindex="1">
-            <label class="btn btn-outline-primary" for="add"><i title="Add item(s)"
-                    class="bi bi-plus-square"></i></label>
+            <label class="btn btn-outline-primary animate__animated" [ngClass]="{animate__bounce:!model.length && !isLoading}" for="add">
+                <i title="Add item(s)" class="bi bi-plus-square"></i>
+            </label>
 
             <input type="checkbox" class="btn-check" id="filters" (click)="showFilters(!showFilter)" tabindex="5"
                 [(ngModel)]="showFilter">
@@ -77,7 +78,7 @@
 </div>
 
 <div *ngIf="showFilter">
-    <div class="form-floating my-3">
+    <div class="form-floating my-3 animate__animated animate__fadeIn">
         <textarea class="form-control shadow" name="filters" id="filters" cols="30" rows="10" [(ngModel)]="filters"
             tabindex="6"></textarea>
         <label for="filters">Filter</label>
@@ -117,7 +118,7 @@
 </ng-template>
 
 <ng-template #Loading>
-    <div class="text-center my-5">
+    <div class="text-center my-5" *ngIf="!isError; else Error">
         Loading...
         <div class="spinner-border spinner-border-sm" role="status">
             <span class="visually-hidden">Loading...</span>

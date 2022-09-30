@@ -4,8 +4,9 @@
         <div class="btn-group me-2">
             <input type="checkbox" class="btn-check" id="add" data-bs-toggle="collapse" data-bs-target="#collapseAdd"
                 tabindex="1" title="">
-            <label class="btn btn-outline-primary" for="add"><i title="Add item(s)"
-                    class="bi bi-plus-square"></i></label>
+            <label class="btn btn-outline-primary animate__animated" [ngClass]="{animate__bounce:!todos.length && !isLoading}" for="add">
+                <i title="Add item(s)" class="bi bi-plus-square"></i>
+            </label>
 
             <input type="checkbox" class="btn-check" autocomplete="off" id="filters" [(ngModel)]="showFilter"
                 (click)="showFilters(!showFilter)" tabindex="5" title="">
@@ -57,8 +58,9 @@
             <button class="btn btn-outline-primary me-2" [routerLink]="['text']" title="Import/Export"><i
                     class="bi bi-cloud-arrow-down"></i></button>
         </div>
-        <button class="btn btn-outline-primary" [routerLink]="['/about']" title="Help/About"><i
-                class="bi bi-question"></i></button>
+        <button class="btn btn-outline-primary" [routerLink]="['/about']" title="Help/About">
+            <i class="bi bi-question"></i>
+        </button>
     </div>
 
 </nav>
@@ -78,7 +80,7 @@
 </div>
 
 <div *ngIf="showFilter">
-    <div class="form-floating my-3">
+    <div class="form-floating my-3 animate__animated animate__fadeIn">
         <textarea class="form-control shadow" name="filters" id="filters" cols="30" rows="10" [(ngModel)]="filters"
             tabindex="6" autofocus></textarea>
         <label for="filters">Filters</label>
