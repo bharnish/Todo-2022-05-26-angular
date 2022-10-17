@@ -1,0 +1,7 @@
+    Loading...
+    <div class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="progress mt-2" *ngIf="loadingProgress>=2">
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{loadingProgress/8*100}}%"></div>
+    </div>

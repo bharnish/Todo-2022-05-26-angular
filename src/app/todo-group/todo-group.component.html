@@ -2,6 +2,11 @@
 <nav class="my-3 d-flex flex-wrap">
     <div class="mb-2">
         <div class="btn-group me-2">
+            <button class="btn btn-outline-primary" [routerLink]="['/',dbkey,'items']" title="Home"><i
+                    class="bi bi-list-task"></i>
+            </button>
+        </div>
+        <div class="btn-group me-2">
             <input type="checkbox" class="btn-check" id="add" data-bs-toggle="collapse" data-bs-target="#collapseAdd"
                 tabindex="1">
             <label class="btn btn-outline-primary animate__animated" [ngClass]="{animate__bounce:!model.length && !isLoading}" for="add">
@@ -34,11 +39,7 @@
 
     </div>
     <div class="mb-1 order-3 order-md-2">
-        <div class="btn-group me-2">
-            <button class="btn btn-outline-primary" [routerLink]="['/',dbkey,'items']" title="Home"><i
-                    class="bi bi-list-task"></i>
-            </button>
-        </div>
+
         <div class="btn-group me-2">
             <button class="btn btn-outline-primary" [routerLink]="['..','context']" routerLinkActive="active"
                 title="Group by context"><i class="bi bi-at"></i></button>
@@ -66,7 +67,7 @@
 <div class="collapse" id="collapseAdd">
     <div class="form-floating my-3">
         <textarea class="form-control shadow" name="quickAdd" id="quickAdd" cols="30" rows="10"
-            title="Add 1 or more todo items" [(ngModel)]="quickAdd" tabindex="2"></textarea>
+            title="Add 1 or more todo items" [(ngModel)]="quickAdd" tabindex="2" placeholder="Add item(s)"></textarea>
         <label for="quickAdd">Add item(s)</label>
     </div>
     <button class="btn btn-primary" *ngIf="quickAdd != ''" (click)="add(quickAdd)" title="Add" tabindex="3">
@@ -80,7 +81,7 @@
 <div *ngIf="showFilter">
     <div class="form-floating my-3 animate__animated animate__fadeIn">
         <textarea class="form-control shadow" name="filters" id="filters" cols="30" rows="10" [(ngModel)]="filters"
-            tabindex="6"></textarea>
+            tabindex="6" placeholder="Filter"></textarea>
         <label for="filters">Filter</label>
     </div>
     <button class="btn btn-primary me-1" *ngIf="filters != oldFilter" (click)="applyFilter(filters)" tabindex="7"
@@ -99,8 +100,11 @@
                     <input class="me-3 form-check-input" type="checkbox" name="completed" id="completed"
                         [(ngModel)]="todo.isCompleted" (change)="complete(todo)">
                     <a [routerLink]="['/',dbkey,'items',todo.id]"
+                        [queryParams]="{groupBy:groupby}"
                         [ngClass]="{waitingfor:(todo.isWaitingFor&&group.key!='@waitingfor')||(todo.isProject&&group.key!='@project'),complete:todo.isCompleted,overdue:todo.isOverdue,due:todo.isDueToday,priority:todo.hasPriority,tomorrow:todo.isDueTomorrow,thresholdPast:todo.isThresholdPast,thresholdToday:todo.isThresholdToday}"
                         title="Edit">{{todo.raw}}</a>
+                    <button *ngIf="todo.priority" class="btn context" title="Filter {{todo.priority}}"
+                        (click)="quickFilter(todo.priority)">{{todo.priority}}</button>
                     <button *ngFor="let c of todo.contexts" class="btn context" title="Filter {{c}}"
                         (click)="quickFilter(c)">{{c}}</button>
                     <button *ngFor="let p of todo.projects" class="btn project" title="Filter {{p}}"
@@ -119,10 +123,7 @@
 
 <ng-template #Loading>
     <div class="text-center my-5" *ngIf="!isError; else Error">
-        Loading...
-        <div class="spinner-border spinner-border-sm" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
+        <app-loading></app-loading>
     </div>
 </ng-template>
 

@@ -1,5 +1,11 @@
 <nav class="my-3 d-flex flex-wrap">
     <div class="mb-2">
+        
+        <div class="btn-group me-2">
+            <button class="btn btn-outline-primary" [routerLink]="['/',dbkey,'items']"><i title="Home"
+                    class="bi bi-list-task"></i></button>
+        </div>
+
         <div class="btn-group me-2">
             <input type="checkbox" class="btn-check" disabled>
             <label class="btn btn-outline-secondary" for="add"><i title="Add item(s)"
@@ -18,11 +24,6 @@
     </div>
     <div class="mb-1 order-3 order-md-2">
         
-        <div class="btn-group me-2">
-            <button class="btn btn-outline-primary" [routerLink]="['/',dbkey,'items']"><i title="Home"
-                    class="bi bi-list-task"></i></button>
-        </div>
-
         <div class="btn-group me-2">
             <button class="btn btn-outline-primary" [routerLink]="['..','groupby','context']"
                 title="Group by context"><i class="bi bi-at"></i></button>

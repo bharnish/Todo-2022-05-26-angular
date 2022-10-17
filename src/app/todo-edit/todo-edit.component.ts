@@ -23,11 +23,16 @@ export class TodoEditComponent implements OnInit {
   isThreshold = false;
   isDeleted = false;
   isError = false;
+  groupby = '';
 
   ngOnInit(): void {
     this.routed.paramMap.subscribe(x => {
       this.dbkey = x.get('dbkey')??'';
       this.itemid = x.get('itemid')??'';
+
+      this.routed.queryParamMap.subscribe(qp => {
+        this.groupby = qp.get('groupBy') ??'';
+      })
 
       this.load();
     })

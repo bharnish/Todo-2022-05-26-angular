@@ -11,6 +11,7 @@ export interface TodoDTO {
   isThresholdPast?: boolean;
   isThresholdToday?: boolean;
   isWaitingFor?: boolean;
+  priority?: string;
   projects?: Array<string>;
   raw?: string;
 }

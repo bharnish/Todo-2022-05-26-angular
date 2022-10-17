@@ -24,6 +24,7 @@ export class TodosListComponent implements OnInit {
   isAdding = false;
   completedCount = 0;
   showFilter = false;
+  loadingProgress = 0;
 
   ngOnInit(): void {
     this.routed.paramMap.subscribe(x => {
@@ -35,10 +36,15 @@ export class TodosListComponent implements OnInit {
 
   load() { 
     this.isLoading = true;
+    this.loadingProgress = 0;
+    var interval = setInterval(() => {
+      this.loadingProgress += 0.1;
+    }, 100);
     this.svc.getApiTasks({DbKey: this.dbkey, Filters: this.filters, Completed: this.showCompleted, Future: this.showFuture}).subscribe(x => {
       this.todos = x.todos ?? [];
       this.completedCount = x.completedCount ?? 0;
       this.isLoading = false;
+      clearInterval(interval);
     },
     e => {
       this.isError = true;

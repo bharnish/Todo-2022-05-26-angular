@@ -43,20 +43,6 @@ a.thresholdToday {
     color: #664d03;
 }
 
-.context, .project {
-    color: #CCC;
-    margin: 0 0.25rem;
-    border: 1px solid #BBB;
-    border-radius: 0.375rem;
-    padding: 0 0.25rem;
-}
-
-.context:hover, .project:hover {
-    color: #FFF;
-    background-color: #CCC;
-    border: 1px solid #999;
-}
-
 a.complete { 
     text-decoration: line-through;
     font-weight: normal !important;
@@ -65,6 +51,25 @@ a.complete {
     border: 0px;
 }
 
+.context, .project {
+    color: var(--bs-gray-400);
+    background-color: var(--bs-white);
+    margin: 0 0.25rem;
+    border: 1px solid var(--bs-gray-500);
+    border-radius: var(--bs-border-radius);
+    padding: 0 0.25rem;
+}
+
+.context:hover, .project:hover {
+    color: var(--bs-white);
+    background-color: var(--bs-gray-400);
+    border: 1px solid var(--bs-gray-600);
+}
+
 .waitingfor {
-    color: #CCC;
+    color: var(--bs-gray-400);
+}
+
+.waitingfor:hover {
+    color: var(--bs-gray-600);
 }

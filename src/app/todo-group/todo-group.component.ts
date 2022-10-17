@@ -25,6 +25,7 @@ export class TodoGroupComponent implements OnInit {
   isError = false;
   completedCount = 0;
   showFilter = false;
+  loadingProgress = 0;
 
   ngOnInit(): void {
     this.routed.paramMap.subscribe(x => {
@@ -37,10 +38,15 @@ export class TodoGroupComponent implements OnInit {
 
   load() { 
     this.isLoading = true;
+    this.loadingProgress = 0;
+    var interval = setInterval(() => {
+      this.loadingProgress += 0.1;
+    }, 100);
     this.svc.getApiTasksGroupByGroupBy({DbKey: this.dbkey, Filters: this.filters, Future: this.showFuture, Completed: this.showCompleted, groupBy: this.groupby}).subscribe(x => {
       this.model = x.groupings ?? [];
       this.completedCount = x.completedCount ?? 0;
       this.isLoading = false;
+      clearInterval(interval);
     }, e => this.isError = true)
   }
 
